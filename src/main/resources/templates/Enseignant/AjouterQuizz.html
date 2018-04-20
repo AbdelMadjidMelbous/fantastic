@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <title>Ela - Bootstrap Admin Dashboard Template</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/lib/html5-editor/bootstrap-wysihtml5.css" />
+    <!-- Custom CSS -->
+    <link href="css/lib/dropzone/dropzone.css" rel="stylesheet">
+    <link href="css/helper.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
+    <!--[if lt IE 9]>
+    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar">
+<!-- Preloader - style you can find in spinners.css -->
+<div class="preloader">
+    <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+</div>
+<!-- Main wrapper  -->
+<div id="main-wrapper">
+    <!-- header header  -->
+    <div class="header">
+        <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <!-- Logo -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <!-- Logo icon -->
+                    <b><img src="images/logo.png" alt="homepage" class="dark-logo" /></b>
+                    <!--End Logo icon -->
+                    <!-- Logo text -->
+                    <span><img src="images/logo-text.png" alt="homepage" class="dark-logo" /></span>
+                </a>
+            </div>
+            <!-- End Logo -->
+            <div class="navbar-collapse">
+                <!-- toggle and nav items -->
+                <ul class="navbar-nav mr-auto mt-md-0">
+                    <!-- This is  -->
+                    <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted  " href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+                    <li class="nav-item m-l-10"> <a class="nav-link sidebartoggler hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    <!-- Messages -->
+                    <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-th-large"></i></a>
+                        <div class="dropdown-menu animated zoomIn">
+                            <ul class="mega-dropdown-menu row">
+
+
+                                <li class="col-lg-3  m-b-30">
+                                    <h4 class="m-b-20">CONTACT US</h4>
+                                    <!-- Contact -->
+                                    <form>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputname1" placeholder="Enter Name"> </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Enter email"> </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Message"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-info">Submit</button>
+                                    </form>
+                                </li>
+                                <li class="col-lg-3 col-xlg-3 m-b-30">
+                                    <h4 class="m-b-20">List style</h4>
+                                    <!-- List style -->
+                                    <ul class="list-style-none">
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                    </ul>
+                                </li>
+                                <li class="col-lg-3 col-xlg-3 m-b-30">
+                                    <h4 class="m-b-20">List style</h4>
+                                    <!-- List style -->
+                                    <ul class="list-style-none">
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                    </ul>
+                                </li>
+                                <li class="col-lg-3 col-xlg-3 m-b-30">
+                                    <h4 class="m-b-20">List style</h4>
+                                    <!-- List style -->
+                                    <ul class="list-style-none">
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> This Is Another Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- End Messages -->
+                </ul>
+                <!-- User profile and search -->
+                <ul class="navbar-nav my-lg-0">
+
+                    <!-- Search -->
+                    <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-search"></i></a>
+                        <form class="app-search">
+                            <input type="text" class="form-control" placeholder="Search here"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
+                    </li>
+                    <!-- Comment -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-muted text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell"></i>
+                            <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn">
+                            <ul>
+                                <li>
+                                    <div class="drop-title">Notifications</div>
+                                </li>
+                                <li>
+                                    <div class="message-center">
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="btn btn-danger btn-circle m-r-10"><i class="fa fa-link"></i></div>
+                                            <div class="mail-contnet">
+                                                <h5>This is title</h5> <span class="mail-desc">Just see the my new admin!</span> <span class="time">9:30 AM</span>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="btn btn-success btn-circle m-r-10"><i class="ti-calendar"></i></div>
+                                            <div class="mail-contnet">
+                                                <h5>This is another title</h5> <span class="mail-desc">Just a reminder that you have event</span> <span class="time">9:10 AM</span>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="btn btn-info btn-circle m-r-10"><i class="ti-settings"></i></div>
+                                            <div class="mail-contnet">
+                                                <h5>This is title</h5> <span class="mail-desc">You can customize this template as you want</span> <span class="time">9:08 AM</span>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="btn btn-primary btn-circle m-r-10"><i class="ti-user"></i></div>
+                                            <div class="mail-contnet">
+                                                <h5>This is another title</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="nav-link text-center" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- End Comment -->
+                    <!-- Messages -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-muted  " href="#" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-envelope"></i>
+                            <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn" aria-labelledby="2">
+                            <ul>
+                                <li>
+                                    <div class="drop-title">You have 4 new messages</div>
+                                </li>
+                                <li>
+                                    <div class="message-center">
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="user-img"> <img src="images/users/5.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="user-img"> <img src="images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>John Doe</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="user-img"> <img src="images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Mr. John</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="user-img"> <img src="images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="nav-link text-center" href="javascript:void(0);"> <strong>See all e-Mails</strong> <i class="fa fa-angle-right"></i> </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- End Messages -->
+                    <!-- Profile -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/users/5.jpg" alt="user" class="profile-pic" /></a>
+                        <div class="dropdown-menu dropdown-menu-right animated zoomIn">
+                            <ul class="dropdown-user">
+                                <li><a href="#"><i class="ti-user"></i> Profile</a></li>
+                                <li><a href="#"><i class="ti-wallet"></i> Balance</a></li>
+                                <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                                <li><a href="#"><i class="ti-settings"></i> Setting</a></li>
+                                <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- End header header -->
+    <!-- Left Sidebar  -->
+    <div class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <li class="nav-devider"></li>
+
+                    <li> <a class="has-arrow  " href="Afficher_Compte_Eleve.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"> Affichage élèves</span></a>
+
+                    </li>
+
+                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-wpforms"></i><span class="hide-menu">Création des Quizs</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="Créer_Quiz_Lecture.html">Lecture</a></li>
+                            <li><a href="Créer_Quiz_Dictée.html">Dictée</a></li>
+                            <li><a href="Créer_Quiz_Mathématique.html">Mathématique</a></li>
+
+                        </ul>
+                    </li>
+                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-edit"></i><span class="hide-menu">Evaluation des Quizs</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="Evaluer_Quiz_Lecture.html">Lecture</a></li>
+                            <li><a href="Evaluer_Quiz_Dictée.html">Dictée</a></li>
+                            <li><a href="Evaluer_Quiz_Mathématique.html">Mathématique</a></li>
+                        </ul>
+                    </li>
+                    <li> <a class="has-arrow  " href="Suivi_Eleve.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"> Suivi élèves</span></a>
+
+                    </li>
+
+                    </li>
+                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Tableau de bord</span></a>
+
+                    </li>
+
+                </ul>
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+    </div>
+    <!-- End Left Sidebar  -->
+    <!-- Page wrapper  -->
+    <div class="page-wrapper">
+        <!-- Bread crumb -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-primary">Création des Quizs</h3> </div>
+            <div class="col-md-7 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Création Quizs</a></li>
+                    <li class="breadcrumb-item active">Lecture</li>
+                </ol>
+            </div>
+        </div>
+        <!-- End Bread crumb -->
+        <!-- Container fluid  -->
+        <div class="container-fluid card-outline-primary">
+            <!-- Start Page Content -->
+            <div class="row">
+                <div class="col-12">
+                    <!-- begin data export -->
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">Création des Quizs de lecture</h4>
+                    </div>
+                    <div class="card">
+                        <div class="card-body p-b-0">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs customtab2" role="tablist">
+                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#infoniv" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Informations sur le niveau</span></a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#importfich" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">Importation fichiers</span></a></li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#ajoutquest" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">Ajouter des questions et réponses</span></a> </li>
+
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="infoniv" role="tabpanel">
+                                    <!-- début form infoniv -->
+                                    <div class="card">
+
+                                        <div class="card-body">
+                                            <div class="form-validation">
+                                                <form class="form-valide" name="infoniv">
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-4 col-form-label" for="val-username">Titre<span class="text-danger">*</span></label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" class="form-control" id="niveau_libelle"  placeholder="Entrez le libellé du niveau" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-4 col-form-label" for="val-username">Poids<span class="text-danger">*</span></label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" class="form-control" id="niveau_poids" placeholder="Entrez le poid du niveau" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-4 col-form-label" for="val-username">Module<span class="text-danger">*</span></label>
+                                                        <div class="col-lg-6">
+                                                            <select id="niveau_module" class="form-control custom-select">
+                                                                <option th:each="module : ${modules}" th:value="${module.id}" ><span th:text="${module.libelle}"></span></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="alert alert-success" id="msgNiveau" style="display: none;">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-8 ml-auto">
+                                                            <button type="submit" class="btn btn-primary" id="btn_submit"> <i class="fa fa-check"></i> Enregistrer les informations du niveau</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- fin form infoniv -->
+                                </div>
+                                <div class="tab-pane  p-20" id="importfich" role="tabpanel">
+                                    <!--début card importerfichier -->
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title"> <b> Importer les fichiers qui contiennent le texte </b> </h4>
+                                            <form action="#" class="dropzone">
+                                                <div class="fallback">
+                                                    <input name="file" type="file" multiple />
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <br> </br>
+                                        <div class="card-body">
+                                            <h4 class="card-title"><b> Saisir le texte </b></h4>
+                                            <h6 class="card-subtitle">Vous pouvez importer le texte ou le saisir</h6>
+                                            <form method="post">
+                                                <div class="form-group">
+                                                    <textarea class="textarea_editor form-control" rows="15" placeholder="Entrez le texte ..." style="height:450px"></textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <br> </br>
+                                        <div class="card-body">
+                                            <h4 class="card-title"> <b> Importer les fichiers qui contiennent les tutoriels </b> </h4>
+                                            <form action="#" class="dropzone">
+                                                <div class="fallback">
+                                                    <input name="file" type="file" multiple />
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <br> </br>
+
+                                        <div class="form-group row">
+                                            <div class="col-lg-8 ml-auto">
+                                                <button type="submit" class="btn btn-primary" id="enregimportfich"> <i class="fa fa-check"></i> Enregsitrer l'importation des fichiers</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- fin card importerfichier-->
+                                </div>
+                                <div class="tab-pane p-20" id="ajoutquest" role="tabpanel">
+
+                                    <!--<div class="form-group row">-->
+                                    <!--<label class="col-lg-4 col-form-label" for="val-username">Nombre de questions<span class="text-danger">*</span></label>-->
+                                    <!--<div class="col-lg-6">-->
+                                    <!--<select id="nbquest" onChange="THEFUNCTIONQ(this.selectedIndex);" class="form-control custom-select">-->
+                                    <!--<option value="">Selectionnez le nombre de questions de ce niveau </option>-->
+                                    <!--<option value="">1</option>-->
+                                    <!--<option value="">2</option>-->
+                                    <!--<option value="">3</option>-->
+                                    <!--<option value="">4</option>-->
+                                    <!--</select>-->
+                                    <!--</div>-->
+                                    <!--</div>-->
+                                    <!--début ajouter question -->
+                                    <div class="card">
+                                        <!--question 1-->
+
+                                        <div class="card-body" id="divquest1">
+                                            <h4 class="card-title"> <b> Question  </b> </h4>
+                                            <br> </br>
+                                            <div class="form-validation">
+                                                <form class="form-valide" method="post" th:action="@{/createquestion}" th:object="${newQuestion}">
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-4 col-form-label" >Niveau<span class="text-danger">*</span></label>
+                                                        <div class="col-lg-6">
+                                                            <select id="niveau" class="form-control custom-select" th:field="*{niveau}">
+                                                                <option th:each="niveau : ${niveaux}" th:value="${niveau.id}" ><span th:text="${niveau.libelle}"></span></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-4 col-form-label" >Enoncé<span class="text-danger">*</span></label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" class="form-control" placeholder="Entrez l'enoncé de la question" th:field="*{ennonce}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-4 col-form-label" >Type<span class="text-danger">*</span></label>
+                                                        <div class="col-lg-6">
+                                                            <select id="typequest" onChange="THEFUNCTION(this.selectedIndex);" class="form-control custom-select">
+                                                                <option value="">Classique</option>
+                                                                <option value="">MultiChoix(2)</option>
+                                                                <option value="">MultiChoix(4)</option>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div style="display:none;" id="divRep0">
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-4 col-form-label" >Réponse correcte<span class="text-danger">*</span></label>
+                                                            <div class="col-lg-6">
+                                                                <input type="text" class="form-control" placeholder="Entrez la réponse" th:field="*{reponse}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="display:none;" id="divRep2">
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-4 col-form-label">Réponse correcte<span class="text-danger">*</span></label>
+                                                            <div class="col-lg-6">
+                                                                <input type="text" class="form-control" placeholder="Entrez la réponse correcte" th:field="*{reponse}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-4 col-form-label" >Réponse fausse<span class="text-danger">*</span></label>
+                                                            <div class="col-lg-6">
+                                                                <input type="text" class="form-control" placeholder="Entrez la réponse fausse" th:field="*{proposition1}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="display:none;" id="divRep4">
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-4 col-form-label" >Réponse correcte<span class="text-danger">*</span></label>
+                                                            <div class="col-lg-6">
+                                                                <input type="text" class="form-control" placeholder="Entrez la réponse correcte" th:field="*{reponse}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-4 col-form-label" >Réponse fausse 1<span class="text-danger">*</span></label>
+                                                            <div class="col-lg-6">
+                                                                <input type="text" class="form-control" placeholder="Entrez la réponse fausse 1" th:field="*{proposition1}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-4 col-form-label" >Réponse fausse 2<span class="text-danger">*</span></label>
+                                                            <div class="col-lg-6">
+                                                                <input type="text" class="form-control" placeholder="Entrez la réponse fausse 2" th:field="*{proposition2}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-4 col-form-label" >Réponse fausse 3<span class="text-danger">*</span></label>
+                                                            <div class="col-lg-6">
+                                                                <input type="text" class="form-control" placeholder="Entrez la réponse fausse 3" th:field="*{proposition3}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-4 col-form-label" >Note<span class="text-danger">*</span></label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" class="form-control" placeholder="Entrez la note de la question" th:field="*{poids}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-8 ml-auto">
+                                                            <button type="submit" class="btn btn-primary"> <i class="fa fa-check"></i> Enregistrer question </button>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                        <!--fin question 1-->
+                                    <!--fin ajouter question -->
+                                    <div class="form-group row">
+                                        <br> </br>
+                                        <div class="col-lg-8 ml-auto">
+                                            <button type="submit" class="btn btn-primary" id="finquest"> <i class="fa fa-check"></i> Finir et enregitrer le Quiz crée</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  début script réponses -->
+                                <script type="text/javascript">
+                                    function THEFUNCTIONQ(i) {
+                                        var divquest1 = document.getElementById('divquest1');
+                                        switch(i) {
+                                            case 1 : divquest1.style.display = ''; break;
+                                            case 2 : divquest1.style.display = ''; break;
+                                            case 3 : divquest1.style.display = ''; break;
+                                            case 4 : divquest1.style.display = ''; break;
+                                        }
+                                        var divquest2 = document.getElementById('divquest2');
+                                        switch(i) {
+                                            case 1: divquest2.style.display = 'none'; break;
+                                            case 2 : divquest2.style.display = ''; break;
+                                            case 3 : divquest2.style.display = ''; break;
+                                            case 4 : divquest2.style.display = ''; break;
+
+                                        }
+                                        var divquest3 = document.getElementById('divquest3');
+                                        switch(i) {
+                                            case 1: divquest3.style.display = 'none'; break;
+                                            case 2 : divquest3.style.display = 'none'; break;
+                                            case 3 : divquest3.style.display = ''; break;
+                                            case 4 : divquest3.style.display = ''; break;
+                                        }
+                                        var divquest4 = document.getElementById('divquest4');
+                                        switch(i) {
+                                            case 1: divquest4.style.display = 'none'; break;
+                                            case 2 : divquest4.style.display = 'none'; break;
+                                            case 3 : divquest4.style.display = 'none'; break;
+                                            case 4 : divquest4.style.display = ''; break;
+                                        }
+
+                                    }
+                                    function THEFUNCTION(i) {
+                                        var divRep0 = document.getElementById('divRep0');
+                                        switch(i) {
+                                            case 0 : divRep0.style.display = ''; break;
+                                            default: divRep0.style.display = ''; break;
+                                        }
+                                        var divRep2 = document.getElementById('divRep2');
+                                        switch(i) {
+                                            case 1 : divRep2.style.display = ''; break;
+                                            default: divRep2.style.display = 'none'; break;
+                                        }
+                                        var divRep4 = document.getElementById('divRep4');
+                                        switch(i) {
+                                            case 2 : divRep4.style.display = ''; break;
+                                            default: divRep4.style.display = 'none'; break;
+                                        }
+
+                                    }
+                                    function THEFUNCTION2(i) {
+                                        var divRep02 = document.getElementById('divRep02');
+                                        switch(i) {
+                                            case 0 : divRep02.style.display = ''; break;
+                                            default: divRep02.style.display = 'none'; break;
+                                        }
+                                        var divRep22 = document.getElementById('divRep22');
+                                        switch(i) {
+                                            case 1 : divRep22.style.display = ''; break;
+                                            default: divRep22.style.display = 'none'; break;
+                                        }
+                                        var divRep42 = document.getElementById('divRep42');
+                                        switch(i) {
+                                            case 2 : divRep42.style.display = ''; break;
+                                            default: divRep42.style.display = 'none'; break;
+                                        }
+
+                                    }
+                                    function THEFUNCTION3(i) {
+                                        var divRep03 = document.getElementById('divRep03');
+                                        switch(i) {
+                                            case 0 : divRep03.style.display = ''; break;
+                                            default: divRep03.style.display = 'none'; break;
+                                        }
+                                        var divRep23 = document.getElementById('divRep23');
+                                        switch(i) {
+                                            case 1 : divRep23.style.display = ''; break;
+                                            default: divRep23.style.display = 'none'; break;
+                                        }
+                                        var divRep43 = document.getElementById('divRep43');
+                                        switch(i) {
+                                            case 2 : divRep43.style.display = ''; break;
+                                            default: divRep43.style.display = 'none'; break;
+                                        }
+
+                                    }
+                                    function THEFUNCTION4(i) {
+                                        var divRep04 = document.getElementById('divRep04');
+                                        switch(i) {
+                                            case 0 : divRep04.style.display = ''; break;
+                                            default: divRep04.style.display = 'none'; break;
+                                        }
+                                        var divRep24 = document.getElementById('divRep24');
+                                        switch(i) {
+                                            case 1 : divRep24.style.display = ''; break;
+                                            default: divRep24.style.display = 'none'; break;
+                                        }
+                                        var divRep44 = document.getElementById('divRep44');
+                                        switch(i) {
+                                            case 2 : divRep44.style.display = ''; break;
+                                            default: divRep44.style.display = 'none'; break;
+                                        }
+
+                                    }
+                                </script>
+                                <!-- FIN DU SCRIPT REPONSE -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- End PAge Content -->
+            </form>
+        </div>
+        <!-- End Container fluid  -->
+        <!-- footer -->
+        <footer class="footer"> © 2018 All rights reserved. Template designed by <a href="https://colorlib.com">Colorlib</a></footer>
+        <!-- End footer -->
+    </div>
+    <!-- End Page wrapper  -->
+</div>
+<!-- End Wrapper -->
+<!-- All Jquery -->
+<script src="js/lib/jquery/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="js/lib/bootstrap/js/popper.min.js"></script>
+<script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="js/jquery.slimscroll.js"></script>
+<!--Menu sidebar -->
+<script src="js/sidebarmenu.js"></script>
+<!--stickey kit -->
+<script src="js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+<script src="js/lib/html5-editor/wysihtml5-0.3.0.js"></script>
+<script src="js/lib/html5-editor/bootstrap-wysihtml5.js"></script>
+<script src="js/lib/html5-editor/wysihtml5-init.js"></script>
+<!--Custom JavaScript -->
+<script src="js/custom.min.js"></script>
+
+
+<script src="js/lib/datatables/datatables.min.js"></script>
+<script src="js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+<script src="js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+<script src="js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script src="js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+<script src="js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+<script src="js/lib/datatables/datatables-init.js"></script>
+
+<script src="js/lib/dropzone/dropzone.js"></script>
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        $('#btn_submit').on("click",function(e){
+            e.preventDefault();
+            var niveau_libelle = $("#niveau_libelle").val();
+            var niveau_poids = $("#niveau_poids").val();
+            var module_id = $("#niveau_module").val();
+            if($.trim(niveau_libelle)===""){
+                alert("You must fill the libelle");
+            }
+            else if($.trim(niveau_poids)===""){
+                alert("You must fill the poids");
+            }
+            else{
+                $.ajax({
+                    type:"POST",
+                    url:"/createniveau",
+                    data:{niveau_libelle:niveau_libelle,niveau_poids:niveau_poids, module_id:module_id},
+                    success:function (data) {
+                        //if (confirm("Order with Id " +data + " Saved")){
+                        $('#msgNiveau').html("Le niveau " +data + "a été bien ajouter").fadeIn('slow');
+                        //$('#msg').html("data insert successfully").fadeIn('slow') //also show a success message
+                        $('#msgNiveau').delay(5000).fadeOut('slow');
+                        setTimeout(function(){// wait for 5 secs(2)
+                            location.reload(); // then reload the page.(3)
+                        }, 5000);
+                        //window.location.reload();
+                        //}
+                    }
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
