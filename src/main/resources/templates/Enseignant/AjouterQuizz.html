@@ -359,39 +359,37 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h4 class="card-title"> <b> Importer les fichiers qui contiennent le texte </b> </h4>
-                                            <form action="#" class="dropzone">
+                                            <form  method="POST" enctype="multipart/form-data" id="fileUploadForm">
+                                                <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" >Niveau<span class="text-danger">*</span></label>
+                                                <div class="col-lg-6">
+                                                    <select class="form-control custom-select" name="niveau_cours" >
+                                                        <option th:each="niveau : ${niveaux}" th:value="${niveau.id}" ><span th:text="${niveau.libelle}"></span></option>
+                                                    </select>
+                                                </div>
+                                                </div>
+                                                <div class="form-group row">
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple />
+                                                    <input name="file" type="file"  multiple />
                                                 </div>
-                                            </form>
-                                        </div>
-                                        <br> </br>
-                                        <div class="card-body">
-                                            <h4 class="card-title"><b> Saisir le texte </b></h4>
-                                            <h6 class="card-subtitle">Vous pouvez importer le texte ou le saisir</h6>
-                                            <form method="post">
-                                                <div class="form-group">
-                                                    <textarea class="textarea_editor form-control" rows="15" placeholder="Entrez le texte ..." style="height:450px"></textarea>
                                                 </div>
-                                            </form>
-                                        </div>
-                                        <br> </br>
-                                        <div class="card-body">
-                                            <h4 class="card-title"> <b> Importer les fichiers qui contiennent les tutoriels </b> </h4>
-                                            <form action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple />
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <br> </br>
 
-                                        <div class="form-group row">
-                                            <div class="col-lg-8 ml-auto">
-                                                <button type="submit" class="btn btn-primary" id="enregimportfich"> <i class="fa fa-check"></i> Enregsitrer l'importation des fichiers</button>
-                                            </div>
+                                            </form>
+                                        </div>
+                                        <br> </br>
+                                        <br> </br>
+                                        <br> </br>
+                                    </div>
+                                    <div class="alert alert-success" id="msgfichier" style="display: none;">
+                                    </div>
+                                    <div class="alert alert-warning" id="msgfichier2" style="display: none;">
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-8 ml-auto">
+                                            <button type="submit" class="btn btn-primary" id="enregimportfich"> <i class="fa fa-check"></i> Importer le Fichier</button>
                                         </div>
                                     </div>
+
 
                                     <!-- fin card importerfichier-->
                                 </div>
@@ -433,6 +431,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
+                                                        <label class="col-lg-4 col-form-label" >Réponse<span class="text-danger">*</span></label>
+                                                        <div class="col-lg-6">
+                                                            <input type="text" class="form-control" placeholder="Entrez la réponse de la question" th:field="*{reponse}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
                                                         <label class="col-lg-4 col-form-label" >Type<span class="text-danger">*</span></label>
                                                         <div class="col-lg-6">
                                                             <select id="typequest" onChange="THEFUNCTION(this.selectedIndex);" class="form-control custom-select">
@@ -444,20 +448,8 @@
                                                         </div>
                                                     </div>
                                                     <div style="display:none;" id="divRep0">
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-4 col-form-label" >Réponse correcte<span class="text-danger">*</span></label>
-                                                            <div class="col-lg-6">
-                                                                <input type="text" class="form-control" placeholder="Entrez la réponse" th:field="*{reponse}">
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                     <div style="display:none;" id="divRep2">
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-4 col-form-label">Réponse correcte<span class="text-danger">*</span></label>
-                                                            <div class="col-lg-6">
-                                                                <input type="text" class="form-control" placeholder="Entrez la réponse correcte" th:field="*{reponse}">
-                                                            </div>
-                                                        </div>
                                                         <div class="form-group row">
                                                             <label class="col-lg-4 col-form-label" >Réponse fausse<span class="text-danger">*</span></label>
                                                             <div class="col-lg-6">
@@ -466,12 +458,6 @@
                                                         </div>
                                                     </div>
                                                     <div style="display:none;" id="divRep4">
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-4 col-form-label" >Réponse correcte<span class="text-danger">*</span></label>
-                                                            <div class="col-lg-6">
-                                                                <input type="text" class="form-control" placeholder="Entrez la réponse correcte" th:field="*{reponse}">
-                                                            </div>
-                                                        </div>
                                                         <div class="form-group row">
                                                             <label class="col-lg-4 col-form-label" >Réponse fausse 1<span class="text-danger">*</span></label>
                                                             <div class="col-lg-6">
@@ -706,5 +692,72 @@
         });
     });
 </script>
+    <script type="application/javascript">
+        $(document).ready(function () {
+
+            $("#enregimportfich").click(function (event) {
+
+                //stop submit the form, we will post it manually.
+                event.preventDefault();
+
+                fire_ajax_submit();
+
+            });
+
+        });
+
+        function fire_ajax_submit() {
+
+            // Get form
+            var form = $('#fileUploadForm')[0];
+
+            var data = new FormData(form);
+            console.log(data.get("file"));
+            console.log(data.get("niveau_cours"));
+            data.append("CustomField", "This is some extra data, testing");
+
+            $("#enregimportfich").prop("disabled", true);
+
+            $.ajax({
+                type: "POST",
+                url: "/api/fileupload",
+                data: data,
+                //http://api.jquery.com/jQuery.ajax/
+                //https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+                processData: false, //prevent jQuery from automatically transforming the data into a query string
+                contentType: false,
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+
+                    //if (confirm("Order with Id " +data + " Saved")){
+                    $('#msgfichier').html("Le fichier " +data.toString() + " a bien été importé").fadeIn('slow');
+                    //$('#msg').html("data insert successfully").fadeIn('slow') //also show a success message
+                    $('#msgfichier').delay(5000).fadeOut('slow');
+                    setTimeout(function(){// wait for 5 secs(2)
+                        location.reload(); // then reload the page.(3)
+                    }, 5000);
+                    //window.location.reload();
+                    //}
+
+                },
+                error: function (e) {
+                    //if (confirm("Order with Id " +data + " Saved")){
+                    $('#msgfichier2').html("Votre fichier n'a pas été importé !").fadeIn('slow');
+                    //$('#msg').html("data insert successfully").fadeIn('slow') //also show a success message
+                    $('#msgfichier2').delay(5000).fadeOut('slow');
+                    setTimeout(function(){// wait for 5 secs(2)
+                        location.reload(); // then reload the page.(3)
+                    }, 5000);
+                    //window.location.reload();
+                    //}
+
+
+                }
+            });
+
+        }
+
+    </script>
 </body>
 </html>

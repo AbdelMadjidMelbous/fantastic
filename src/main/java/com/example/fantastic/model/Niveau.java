@@ -25,6 +25,9 @@ public class Niveau {
     @OneToMany(mappedBy = "niveau")
     private List<Question> questions;
 
+    @OneToMany(mappedBy = "niveau")
+    private List<SupportDeCours> cours;
+
     public Niveau() {
     }
 
@@ -39,6 +42,18 @@ public class Niveau {
         this.poids = poids;
         this.module = module;
         this.questions = questions;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<SupportDeCours> getCours() {
+        return cours;
+    }
+
+    public void setCours(List<SupportDeCours> cours) {
+        this.cours = cours;
     }
 
     public Long getId() {
