@@ -370,10 +370,9 @@
                                                 </div>
                                                 <div class="form-group row">
                                                 <div class="fallback">
-                                                    <input name="file" type="file"  multiple />
+                                                    <input id="cours" name="file" type="file" onchange="checkExtension();" multiple />
                                                 </div>
                                                 </div>
-
                                             </form>
                                         </div>
                                         <br> </br>
@@ -490,6 +489,7 @@
                                                     </div>
 
                                                 </form>
+
                                             </div>
 
                                         </div>
@@ -733,10 +733,10 @@
                     //if (confirm("Order with Id " +data + " Saved")){
                     $('#msgfichier').html("Le fichier " +data.toString() + " a bien été importé").fadeIn('slow');
                     //$('#msg').html("data insert successfully").fadeIn('slow') //also show a success message
-                    $('#msgfichier').delay(5000).fadeOut('slow');
+                    $('#msgfichier').delay(2000).fadeOut('slow');
                     setTimeout(function(){// wait for 5 secs(2)
-                        location.reload(); // then reload the page.(3)
-                    }, 5000);
+                        location.replace("/cours"); // Redirection vers la page des cours
+                    }, 2000);
                     //window.location.reload();
                     //}
 
@@ -745,10 +745,10 @@
                     //if (confirm("Order with Id " +data + " Saved")){
                     $('#msgfichier2').html("Votre fichier n'a pas été importé !").fadeIn('slow');
                     //$('#msg').html("data insert successfully").fadeIn('slow') //also show a success message
-                    $('#msgfichier2').delay(5000).fadeOut('slow');
+                    $('#msgfichier2').delay(3000).fadeOut('slow');
                     setTimeout(function(){// wait for 5 secs(2)
                         location.reload(); // then reload the page.(3)
-                    }, 5000);
+                    }, 3000);
                     //window.location.reload();
                     //}
 
@@ -758,6 +758,22 @@
 
         }
 
+    </script>
+    <script>
+        function checkExtension() {
+            var f = document.getElementById('cours');
+            var fileName = f.value;
+            var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+            ext = ext.toLowerCase();
+            if (ext != "pdf") {
+                document.getElementById('cours').value = '';
+                document.getElementById("enregimportfich").disabled = true;
+                alert("Attention ! seuls les fichiers .pdf sont acceptés");
+            }
+            else {
+                document.getElementById("enregimportfich").disabled = false;
+            }
+        }
     </script>
 </body>
 </html>
