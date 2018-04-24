@@ -15,6 +15,8 @@ public class Question {
     @Column(name = "id")
     private Long id;
     @Column(nullable=false)
+    private int num_question;
+    @Column(nullable=false)
     private String ennonce;
     @Column(nullable=false)
     private int poids;
@@ -37,13 +39,15 @@ public class Question {
     public Question() {
     }
 
-    public Question(String ennonce, int poids, String reponse) {
+    public Question(int num_question,String ennonce, int poids, String reponse) {
+        this.num_question = num_question;
         this.ennonce = ennonce;
         this.poids = poids;
         this.reponse = reponse;
     }
 
-    public Question(String ennonce, int poids, String reponse, Niveau niveau, String proposition1,String proposition2,String proposition3) {
+    public Question(int num_question,String ennonce, int poids, String reponse, Niveau niveau, String proposition1,String proposition2,String proposition3) {
+        this.num_question = num_question;
         this.ennonce = ennonce;
         this.poids = poids;
         this.reponse = reponse;
@@ -113,5 +117,13 @@ public class Question {
 
     public void setProposition3(String proposition3) {
         this.proposition3 = proposition3;
+    }
+
+    public int getNum_question() {
+        return num_question;
+    }
+
+    public void setNum_question(int num_question) {
+        this.num_question = num_question;
     }
 }
