@@ -33,7 +33,7 @@ import org.springframework.core.io.ByteArrayResource;
 
 @Controller
 
-public class FileUploadController {
+public class SupportDeCoursController {
     @Autowired
     NiveauRepository niveauRepository;
     @Autowired
@@ -79,7 +79,7 @@ public class FileUploadController {
 
 
 
-    @RequestMapping(value = "/api/fileupload", method = RequestMethod.POST)
+    @RequestMapping(value = "/importerFichier", method = RequestMethod.POST)
     public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile uploadfile,@RequestParam("niveau_cours") Long niveau_id) {
         //logger.debug("Single file upload!");
         if (uploadfile.isEmpty()) {

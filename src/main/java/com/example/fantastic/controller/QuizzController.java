@@ -27,10 +27,8 @@ public class QuizzController {
 
     @RequestMapping(value = "/quizz", method = RequestMethod.GET)
     public String quizz(Model model){
-        List<Question> questions = questionRepository.findByNum_question(1,niveauRepository.findById(2L).get());
         model.addAttribute("modules", moduleRepository.findAll());
         model.addAttribute("niveaux", niveauRepository.findAll());
-        model.addAttribute("questions", questions);
         model.addAttribute("newQuestion", new Question());
         return "Enseignant/AjouterQuizz";
     }
