@@ -7,13 +7,14 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Niveaux")
+@Table(name = "Niveaux",uniqueConstraints = {
+        @UniqueConstraint(columnNames = { "libelle", "module_id" })})
 public class Niveau {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(nullable=false, unique = true)   //must be unique
+    @Column(nullable=false)   //must be unique
     private String libelle;
     @Column(nullable=false)
     private int poids;
@@ -22,11 +23,16 @@ public class Niveau {
     @JoinColumn(name="module_id")
     private Module module;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="annee_id")
+    private Annee annee;
+
     @OneToMany(mappedBy = "niveau")
     private List<Question> questions;
 
     @OneToMany(mappedBy = "niveau")
     private List<SupportDeCours> cours;
+
 
     public Niveau() {
     }
@@ -41,6 +47,14 @@ public class Niveau {
         this.libelle = libelle;
         this.poids = poids;
         this.module = module;
+        this.questions = questions;
+    }
+
+    public Niveau(String libelle, int poids, Module module, Annee annee, List<Question> questions) {
+        this.libelle = libelle;
+        this.poids = poids;
+        this.module = module;
+        this.annee = annee;
         this.questions = questions;
     }
 
@@ -90,5 +104,13 @@ public class Niveau {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+
+    public Annee getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(Annee annee) {
+        this.annee = annee;
     }
 }

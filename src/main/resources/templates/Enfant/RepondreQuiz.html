@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Répondre Quizz</title>
+</head>
+<body>
+<div th:field="laquestion">
+    <h3 th:text="${question.ennonce}"></h3>
+</div>
+<form method="post" th:action="@{/envoyerReponse}" th:object="${newReponse}">
+    <div class="form-group row">
+        <label>Votre Réponse<span>*</span></label>
+        <input type="text" class="form-control" placeholder="Entrez la réponse de la question"  th:field="*{reponse}">
+    </div>
+    <select id="eleve" class="form-control custom-select" style="visibility:hidden;" th:field="*{eleve}">
+        <option th:value="${eleve.id}"></option>
+    </select>
+    <select id="question" class="form-control custom-select" style="visibility:hidden;" th:field="*{question}">
+        <option th:value="${question.id}"></option>
+    </select>
+    <div class="form-group row">
+        <div class="col-lg-8 ml-auto">
+            <button type="submit" > <i class="fa fa-check"></i> Enregistrer question </button>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>

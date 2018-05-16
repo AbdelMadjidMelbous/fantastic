@@ -35,6 +35,9 @@ public class Question {
     @JoinColumn(name="niveau_id")
     private Niveau niveau;
 
+    @OneToMany(fetch=FetchType.LAZY,mappedBy = "question")
+    private List<ReponseEleve> reponseEleves;
+
 
     public Question() {
     }
@@ -125,5 +128,13 @@ public class Question {
 
     public void setNum_question(int num_question) {
         this.num_question = num_question;
+    }
+
+    public List<ReponseEleve> getReponseEleves() {
+        return reponseEleves;
+    }
+
+    public void setReponseEleves(List<ReponseEleve> reponseEleves) {
+        this.reponseEleves = reponseEleves;
     }
 }

@@ -82,6 +82,7 @@ public class SupportDeCoursController {
     @RequestMapping(value = "/importerFichier", method = RequestMethod.POST)
     public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile uploadfile,@RequestParam("niveau_cours") Long niveau_id) {
         //logger.debug("Single file upload!");
+        System.out.println("Hell oworld ");
         if (uploadfile.isEmpty()) {
             return new ResponseEntity("please select a file!", HttpStatus.OK);
         }
