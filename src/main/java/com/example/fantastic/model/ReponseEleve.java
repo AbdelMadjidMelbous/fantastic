@@ -23,6 +23,9 @@ public class ReponseEleve {
     @Column(name = "Reponse")
     private String reponse;
 
+    @Column(name = "note")
+    private Long note;
+
     public ReponseEleve() {
     }
 
@@ -54,5 +57,21 @@ public class ReponseEleve {
 
     public void setReponse(String reponse) {
         this.reponse = reponse;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getNote() {
+        return note;
+    }
+
+    public void setNote(Long note) {
+        this.note = note;
     }
 }
