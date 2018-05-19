@@ -20,6 +20,9 @@ public class Eleve {
     @OneToMany(fetch=FetchType.LAZY,mappedBy = "eleve")
     private List<ReponseEleve> reponseEleves;
 
+    @OneToMany(fetch=FetchType.LAZY,mappedBy = "eleve")
+    private List<NiveauEleve> niveauEleves;
+
     public Eleve() {
     }
 

@@ -32,6 +32,7 @@ public class FantasticApplication implements CommandLineRunner {
 	@Override
 	public void run(String... strings) throws Exception {
 
+
 		Product mocha = new Product();
 		mocha.setProductName("Mocha");
 		mocha.setProductPrice(3.95);

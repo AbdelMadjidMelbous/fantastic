@@ -18,6 +18,9 @@ public class Niveau {
     private String libelle;
     @Column(nullable=false)
     private int poids;
+    @Column(nullable=false)
+    private int difficulte;
+
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="module_id")
@@ -33,6 +36,9 @@ public class Niveau {
     @OneToMany(mappedBy = "niveau")
     private List<SupportDeCours> cours;
 
+    @OneToMany(fetch=FetchType.LAZY,mappedBy = "niveau")
+    private List<NiveauEleve> niveauEleves;
+
 
     public Niveau() {
     }
@@ -41,6 +47,12 @@ public class Niveau {
         this.id=id;
         this.libelle = libelle;
         this.poids = poids;
+    }
+
+    public Niveau(String libelle, int poids, int difficulte) {
+        this.libelle = libelle;
+        this.poids = poids;
+        this.difficulte = difficulte;
     }
 
     public Niveau(String libelle, int poids, Module module, List<Question> questions) {
@@ -112,5 +124,21 @@ public class Niveau {
 
     public void setAnnee(Annee annee) {
         this.annee = annee;
+    }
+
+    public int getDifficulte() {
+        return difficulte;
+    }
+
+    public void setDifficulte(int difficulte) {
+        this.difficulte = difficulte;
+    }
+
+    public List<NiveauEleve> getNiveauEleves() {
+        return niveauEleves;
+    }
+
+    public void setNiveauEleves(List<NiveauEleve> niveauEleves) {
+        this.niveauEleves = niveauEleves;
     }
 }

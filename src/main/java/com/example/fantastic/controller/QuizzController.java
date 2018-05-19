@@ -90,6 +90,25 @@ public class QuizzController {
         return "Enseignant/ListeDesNiveaux";
     }
 
+    @RequestMapping(value = "/listeQuestions/{id_eleve}/{id_niveau}",method = RequestMethod.GET)
+    public String listeQuestion(@PathVariable Long id_eleve,@PathVariable Long id_niveau,Model model){
+        model.addAttribute("questionsPassee",reponseEleveRepository.questionPassee(eleveRepository.findById(id_eleve).get(),niveauRepository.findById(id_niveau).get(),false));
+        model.addAttribute("questionEnCours",reponseEleveRepository.questionEnCours(eleveRepository.findById(id_eleve).get(),niveauRepository.findById(id_niveau).get(),true));
+        model.addAttribute("questionsRestant",questionsRestant(eleveRepository.findById(id_eleve).get(),niveauRepository.findById(id_niveau).get()));
+        model.addAttribute("niveau",niveauRepository.findById(id_niveau).get());
+        return "Enfant/ListeQuestions";
+    }
+
+    public List<Question> questionsRestant (Eleve eleve, Niveau niveau){
+        List<Question> questionsPassee=reponseEleveRepository.questionPassee(eleve,niveau,false);
+        List<Question> questionsRestant=questionRepository.findByNiveau(niveau);
+        questionsRestant.remove(reponseEleveRepository.questionEnCours(eleve,niveau,true));
+        for (int i=0; i< questionsPassee.size();i++){
+            Question q=questionsPassee.get(i);
+            questionsRestant.remove(q);
+        }
+        return questionsRestant;
+    }
 
 
 }

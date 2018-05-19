@@ -26,6 +26,9 @@ public class ReponseEleve {
     @Column(name = "note")
     private Long note;
 
+    @Column(name = "encours")
+    private boolean encours;
+
     public ReponseEleve() {
     }
 
@@ -33,6 +36,21 @@ public class ReponseEleve {
         this.eleve = eleve;
         this.question = question;
         this.reponse = reponse;
+    }
+
+    public ReponseEleve(Eleve eleve, Question question, String reponse, Long note) {
+        this.eleve = eleve;
+        this.question = question;
+        this.reponse = reponse;
+        this.note = note;
+    }
+
+    public ReponseEleve(Eleve eleve, Question question, String reponse, Long note, boolean encours) {
+        this.eleve = eleve;
+        this.question = question;
+        this.reponse = reponse;
+        this.note = note;
+        this.encours = encours;
     }
 
     public Eleve getEleve() {
@@ -73,5 +91,13 @@ public class ReponseEleve {
 
     public void setNote(Long note) {
         this.note = note;
+    }
+
+    public boolean isEncours() {
+        return encours;
+    }
+
+    public void setEncours(boolean encours) {
+        this.encours = encours;
     }
 }
