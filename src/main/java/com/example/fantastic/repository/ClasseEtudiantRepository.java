@@ -12,6 +12,7 @@ import java.util.List;
 public interface ClasseEtudiantRepository  extends CrudRepository<ClasseEtudiant,Long>{
     @Query("select c.eleves from ClasseEtudiant c where c.annee = :annee AND c.numero = :numero")
     List<Eleve> findEleveByClass(@Param("annee") Annee annee, @Param("numero") int numero);
-
+    @Query("select c from ClasseEtudiant c where c.annee = :annee AND c.numero = :numero")
+    ClasseEtudiant findClass(@Param("annee") Annee annee, @Param("numero") int numero);
 
 }

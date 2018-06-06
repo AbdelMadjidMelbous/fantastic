@@ -186,7 +186,7 @@
                     <h3 class="text-primary">Suivi des élèves par question</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)"><span th:text="${eleve.prenom} "></span>&nbsp;<span th:text="${eleve.nom}"></span></a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)"><span th:text="${niveau.libelle}"></span></a></li>
                     </ol>
                 </div>
             </div>
@@ -198,7 +198,7 @@
                     <div class="col-12">
                         <!-- begin data export -->
                          <div class="card-header">
-                                <h4 class="m-b-0 text-white" th:text="${niveau.libelle}"></h4>
+                                <h4 class="m-b-0 text-white" ><span th:text="${eleve.prenom}"> </span> &nbsp;<span th:text="${eleve.nom}"></span></h4>
                         </div>
                         <div class="card">
                             <div class="card-body">
@@ -214,7 +214,7 @@
                                         </thead>
                                         <tbody>
                                             <tr th:each="reponse : ${reponses}" th:value="${reponse.id}" >
-                                                <td> <span class="badge badge-lecture" th:text="${niveau.module}"></span> </td>
+                                                <td> <span class="badge badge-lecture" th:text="${niveau.module.libelle}"></span> </td>
                                                 <td><span th:text="${reponse.question.ennonce}"></span> </td>
                                                 <td><span th:text="${reponse.reponse}"></span></td>
                                                 <td> <span th:text="${reponse.note}"></span> </td>

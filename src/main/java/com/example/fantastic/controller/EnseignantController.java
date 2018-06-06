@@ -31,9 +31,12 @@ public class EnseignantController {
     //Récupérer la liste des étudiants d'une classe
     @RequestMapping(value = "/classe/{id_annee}/{num_class}", method = RequestMethod.GET)
     public String getClass(@PathVariable Long id_annee, @PathVariable int num_class, Model model){
-        List<Eleve> eleves= classeEtudiantRepository.findEleveByClass(anneeRepository.findById(id_annee).get(),num_class);
+        Annee annee=anneeRepository.findById(id_annee).get();
+        ClasseEtudiant classeEtudiant=classeEtudiantRepository.findClass(annee,num_class);
+        List<Eleve> eleves= classeEtudiantRepository.findEleveByClass(annee,num_class);
         model.addAttribute("eleves",eleves);
-        return "redirect:/cours";
+        model.addAttribute("class",classeEtudiant);
+        return "Enseignant/Suivi_Eleve_Classe";
     }
 
     // Récupérer la liste des réponses d'un élève pour un niveau X
