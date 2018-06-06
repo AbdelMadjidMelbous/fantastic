@@ -1873,6 +1873,19 @@ textarea {
   background-color: #60a3bc;
   color :#82ccdd;
 }
+.badge-termine-lecture {
+  background-color: #f9cb1e;
+  color :#e55039;
+}
+.badge-termine-dicte {
+  background-color: #53efc5;
+  color :#e55039;
+}
+.badge-termine-math {
+  background-color: #fe9ff0;
+  color :#e55039;
+}
+
 .badge-info {
   background-color: #1976d2;
 }
@@ -2307,7 +2320,7 @@ textarea {
   border-color: #5c4ac7;
 }
 .card-outline-primary .card-header {
-  background: #5c4ac7 none repeat scroll 0 0;
+  background: #5c4ac7   none repeat scroll 0 0;
   border-color: #5c4ac7;
 }
 .card-outline-primary-lect {

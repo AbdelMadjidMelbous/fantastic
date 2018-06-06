@@ -18,4 +18,6 @@ public interface NiveauRepository extends CrudRepository<Niveau, Long> {
     List<Niveau> findByAnnee(@Param("annee") Annee annee);
     @Query("select n1 from Niveau n1 where n1.annee = :annee and n1.module = :module")
     List<Niveau> findByAnneeModule(@Param("annee") Annee annee,@Param("module") Module module);
+    @Query ("select n1 from Niveau n1 where n1.annee = :annee and n1.module = :module and n1.difficulte = :difficulte")
+    List<Niveau> findByDifficulte (@Param("annee") Annee annee,@Param("module") Module module,@Param("difficulte") int difficulte);
 }

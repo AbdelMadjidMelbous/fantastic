@@ -21,6 +21,9 @@ public class Annee {
     @OneToMany(fetch=FetchType.LAZY,mappedBy = "annee")
     private List<Niveau> niveaux;
 
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "annee")
+    private List<ClasseEtudiant> classeEtudiants;
+
     public Annee() {
     }
 

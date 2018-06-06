@@ -29,6 +29,8 @@ public class QuizzController {
     AnneeRepository anneeRepository;
     @Autowired
     ReponseEleveRepository reponseEleveRepository;
+    @Autowired
+    NiveauEleveRepository niveauEleveRepository;
 
     @RequestMapping(value = "/quizz", method = RequestMethod.GET)
     public String quizz(Model model){
@@ -44,6 +46,7 @@ public class QuizzController {
         //model.addAttribute("annees", anneeRepository.findAll());
         Module module = moduleRepository.findById(module_id).get();
         model.addAttribute("questions", questionRepository.findByModule(module));
+        model.addAttribute("upQuestion", new Question());
         return "Enseignant/Afficher_Quiz_Lecture";
     }
 
@@ -77,17 +80,35 @@ public class QuizzController {
         return niveau.getId().toString();
     }
     @RequestMapping(value="/createquestion", method = RequestMethod.POST)
-    public String saveQuestion(@ModelAttribute(value = "newQuestion") Question question){
+    public String createQuestion(@ModelAttribute(value = "newQuestion") Question question){
         questionRepository.save(question);
         return "redirect:/quizz";
     }
 
-    // To Test !
     @RequestMapping(value = "/niveaux/{module_id}/{annee_id}", method = RequestMethod.GET)
     public String NiveauxByModule(@PathVariable Long module_id,@PathVariable Long annee_id,Model model){
         List<Niveau>  ListeNiveau= niveauRepository.findByAnneeModule(anneeRepository.findById(annee_id).get(),moduleRepository.findById(module_id).get());
         model.addAttribute("niveaux", ListeNiveau);
         return "Enseignant/ListeDesNiveaux";
+    }
+
+    @RequestMapping("editQuestion/{id}")
+    public String edit(@PathVariable Long id, Model model){
+        model.addAttribute("question", questionRepository.findById(id).get());
+        return "Enseignant/EditQuestion";
+    }
+
+    @RequestMapping(value="/updatequestion", method = RequestMethod.POST)
+    public String saveQuestion(Question question){
+        questionRepository.save(question);
+        return "redirect:/quizz";
+    }
+
+    @RequestMapping(value = "/removeQuestion/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public String removeQuestion(@PathVariable(name = "id") Long Id){
+        questionRepository.deleteById(Id);
+        return Id.toString();
     }
 
     @RequestMapping(value = "/listeQuestions/{id_eleve}/{id_niveau}",method = RequestMethod.GET)
@@ -97,6 +118,14 @@ public class QuizzController {
         model.addAttribute("questionsRestant",questionsRestant(eleveRepository.findById(id_eleve).get(),niveauRepository.findById(id_niveau).get()));
         model.addAttribute("niveau",niveauRepository.findById(id_niveau).get());
         return "Enfant/ListeQuestions";
+    }
+    @RequestMapping(value = "/test5/{id_eleve}/{id_question}",method = RequestMethod.GET)
+    public String myytesttt(@PathVariable Long id_eleve,@PathVariable Long id_question) {
+        Eleve e=eleveRepository.findById(id_eleve).get();
+        Question q=questionRepository.findById(id_question).get();
+        changementDeQuestion(e,q);
+        return "redirect:/quizz";
+
     }
 
     public List<Question> questionsRestant (Eleve eleve, Niveau niveau){
@@ -108,6 +137,50 @@ public class QuizzController {
             questionsRestant.remove(q);
         }
         return questionsRestant;
+    }
+
+    public void changementDeQuestion(Eleve eleve,Question questionEnCours ){
+        //Chercher la question en cours dans la table réponse
+        ReponseEleve r=reponseEleveRepository.ReponseByQuestion(questionEnCours,eleve);
+        //Changer l'état de la question en cours
+        r.setEncours(false);
+        reponseEleveRepository.save(r); // updadate??
+        //Rechercher la question suivante dans le niveau est l'insérer dans la table réponse elève
+        int num_suivant= questionEnCours.getNum_question() +1;
+        List<Question> questionSuivante= questionRepository.findByNum_question(num_suivant,questionEnCours.getNiveau());
+        //Ajouter la nouvelle question dans la table
+        if (questionSuivante.size() != 0){
+            ReponseEleve nouvReponse= new ReponseEleve();
+            nouvReponse.setEncours(true);
+            nouvReponse.setEleve(eleve);
+            nouvReponse.setNote(0);
+            nouvReponse.setQuestion(questionSuivante.get(0));
+            reponseEleveRepository.save(nouvReponse);
+        }else {
+            //Chercher la première question dans le niveau suivant
+            ReponseEleve nouvReponse= new ReponseEleve();
+            nouvReponse.setEncours(true);
+            nouvReponse.setEleve(eleve);
+            nouvReponse.setNote(0);
+            num_suivant=1;
+            int difSuivante=questionEnCours.getNiveau().getDifficulte()+1;
+            List<Niveau> niveauSuivant=niveauRepository.findByDifficulte(questionEnCours.getNiveau().getAnnee(),questionEnCours.getNiveau().getModule(),difSuivante);
+            if (niveauSuivant.size() !=0){
+                // s'il existe un niveau suivant on sauvgarde dans la table niveauEleve et on cherche la première question de ce niveau
+                NiveauEleve niveauEleve= niveauEleveRepository.findByniveau(eleve,questionEnCours.getNiveau());
+                niveauEleve.setEncours(false);
+                NiveauEleve nouvNiveau= new NiveauEleve();
+                nouvNiveau.setEncours(true);
+                nouvNiveau.setEleve(eleve);
+                nouvNiveau.setNiveau(niveauSuivant.get(0));
+                niveauEleveRepository.save(nouvNiveau);
+                questionSuivante=questionRepository.findByNum_question(num_suivant,niveauSuivant.get(0));
+                nouvReponse.setQuestion(questionSuivante.get(0));
+                reponseEleveRepository.save(nouvReponse);
+            }
+
+        }
+
     }
 
 

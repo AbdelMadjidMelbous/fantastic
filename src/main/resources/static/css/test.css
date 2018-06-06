@@ -1,4 +1,15 @@
-h1{
-    color:yellow;
-    font-size: 72px;
+/* première étape */
+p#doigt a:hover, p#doigt a:focus {
+background-color:#ff8c00; /* pour les vieux navigateurs */
+color: black;
+animation-name: doigt; /* nom de l'animation */
+animation-duration: 4s; /* temps de l'animation (4s) */
+animation-iteration-count: infinite; /* nombre de boucles (infinie) */
+animation-timing-function: linear; /* accelération de l'animation (constant) */
+}
+/* deuxième étape */
+@keyframes doigt {
+0% {background:rgba(255,140,0,0.4) url(/images/main.png) no-repeat 5px 10px;}
+50% {background:rgba(255,140,0,1) url(/images/main.png) no-repeat 50px 10px;}
+100% {background:rgba(255,140,0,0.4) url(/images/main.png) no-repeat 5px 10px;}
 }

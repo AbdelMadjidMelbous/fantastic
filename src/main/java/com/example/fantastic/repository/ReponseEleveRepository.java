@@ -16,4 +16,14 @@ public interface ReponseEleveRepository extends CrudRepository<ReponseEleve,Long
     List<Question> questionPassee(@Param("eleve")Eleve eleve, @Param("niveau") Niveau niveau, @Param("encours") boolean encours);
     @Query("select r.question from ReponseEleve r where r.eleve = :eleve AND r.question.niveau = :niveau AND r.encours = :encours")
     Question questionEnCours(@Param("eleve")Eleve eleve, @Param("niveau") Niveau niveau, @Param("encours") boolean encours);
+    @Query("select r from ReponseEleve r where r.question = :question AND r.eleve = :eleve")
+    ReponseEleve ReponseByQuestion(@Param("question") Question question,@Param("eleve") Eleve eleve);
+    @Query("select r from ReponseEleve r where r.question = :question")
+    List<ReponseEleve> AllReponseByQuestion(@Param("question") Question question);
+    @Query("select r from ReponseEleve r where r.eleve = :eleve AND r.question.niveau = :niveau")
+    List<ReponseEleve> ReponseByNiveau(@Param("eleve") Eleve eleve,@Param("niveau") Niveau niveau);
+    @Query("select r from ReponseEleve r where r.question = :question and r.eleve = :eleve")
+    ReponseEleve findByQuestionEleve(@Param("question") Question question, @Param("eleve") Eleve eleve);
+
 }
+

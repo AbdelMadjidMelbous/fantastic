@@ -19,5 +19,6 @@ public interface NiveauEleveRepository extends CrudRepository<NiveauEleve,Long> 
     List<Niveau> niveauPassee(@Param("eleve")Eleve eleve, @Param("module") Module module,@Param("annee") Annee annee,@Param("encours") boolean encours);
     @Query("select n.niveau from NiveauEleve n where n.eleve = :eleve AND n.niveau.module = :module AND n.niveau.annee = :annee AND n.encours = :encours")
     Niveau niveauEnCours(@Param("eleve")Eleve eleve,@Param("module") Module module,@Param("annee") Annee annee,@Param("encours") boolean encours);
-
+    @Query ("select ne from NiveauEleve ne where ne.eleve = :eleve AND ne.niveau = :niveau")
+    NiveauEleve findByniveau(@Param("eleve")Eleve eleve,@Param("niveau") Niveau niveau);
 }

@@ -8,10 +8,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -50,11 +47,27 @@ public class EleveController {
         return "Enfant/RepondreQuiz";
     }
 
-    @RequestMapping(value="/envoyerReponse", method = RequestMethod.POST)
-    public String saveReponse(@ModelAttribute(value = "newReponse") ReponseEleve reponseEleve){
-//        System.out.println(reponseEleve.getEleve().getId());
-        reponseEleveRepository.save(reponseEleve);
-        return "redirect:/cours";
+    @RequestMapping(value="/envoyerReponse", method = RequestMethod.POST) // à tester
+    @ResponseBody
+    public String saveReponse(@RequestParam Long eleve_id, @RequestParam Long question_id, @RequestParam String reponse){
+        //System.out.println(reponseEleve.getEleve().getId());
+        // System.out.println(reponseEleve.getReponse());
+
+        Question question = questionRepository.findById(question_id).get();
+        String msg = "Votre réponse est incorrecte, La bonne réponse est "+question.getReponse();
+        Eleve eleve = eleveRepository.findById(eleve_id).get();
+        ReponseEleve reponseEleve1 = reponseEleveRepository.findByQuestionEleve(question,eleve);
+        System.out.println(reponse);
+        reponseEleve1.setReponse(reponse);
+        if (reponseEleve1.getReponse().equals(question.getReponse()))
+        {
+            reponseEleve1.setNote(question.getPoids());
+            msg = "Votre réponse est correcte";
+        }
+
+        reponseEleveRepository.save(reponseEleve1);
+
+        return msg;
     }
     @RequestMapping(value = "/listeNiveaux/{id_eleve}/{id_module}/{id_annee}",method = RequestMethod.GET)
     public String listeNiveau(@PathVariable Long id_eleve,@PathVariable Long id_module,@PathVariable Long id_annee,Model model){
@@ -64,14 +77,6 @@ public class EleveController {
     model.addAttribute("module",moduleRepository.findById(id_module).get());
     return "Enfant/ListeNiveaux";
     }
-
-    @RequestMapping(value = "/test2",method = RequestMethod.GET)
-    public String test(){
-        List<Niveau> n=niveauRestant(eleveRepository.findById(1L).get(),moduleRepository.findById(1L).get(),anneeRepository.findById(1L).get());
-        System.out.println(n.size());
-        return "redirect:/cours";
-    }
-
 
     public List<Niveau> niveauRestant (Eleve eleve, Module module, Annee annee){
         List<Niveau> niveauPassee=niveauEleveRepository.niveauPassee(eleve,module,annee,false);

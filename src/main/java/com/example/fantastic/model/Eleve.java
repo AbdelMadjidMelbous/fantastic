@@ -23,6 +23,10 @@ public class Eleve {
     @OneToMany(fetch=FetchType.LAZY,mappedBy = "eleve")
     private List<NiveauEleve> niveauEleves;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="classeEtudiant_id")
+    private ClasseEtudiant classeEtudiant;
+
     public Eleve() {
     }
 
@@ -30,6 +34,13 @@ public class Eleve {
         this.nom = nom;
         this.prenom = prenom;
         this.username = username;
+    }
+
+    public Eleve(String nom, String prenom, String username, ClasseEtudiant classeEtudiant) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.username = username;
+        this.classeEtudiant = classeEtudiant;
     }
 
     public Long getId() {
@@ -70,5 +81,21 @@ public class Eleve {
 
     public void setReponseEleves(List<ReponseEleve> reponseEleves) {
         this.reponseEleves = reponseEleves;
+    }
+
+    public List<NiveauEleve> getNiveauEleves() {
+        return niveauEleves;
+    }
+
+    public void setNiveauEleves(List<NiveauEleve> niveauEleves) {
+        this.niveauEleves = niveauEleves;
+    }
+
+    public ClasseEtudiant getClasseEtudiant() {
+        return classeEtudiant;
+    }
+
+    public void setClasseEtudiant(ClasseEtudiant classeEtudiant) {
+        this.classeEtudiant = classeEtudiant;
     }
 }

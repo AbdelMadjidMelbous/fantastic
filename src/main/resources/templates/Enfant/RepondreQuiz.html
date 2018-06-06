@@ -3,28 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Répondre Quizz</title>
+    <style>
+        body {
+            background: url(/images/finalus_lecture.jpg) no-repeat center center fixed;
+            background-size: 100% 100%;
+        }
+    </style>
 </head>
 <body>
-<div th:field="laquestion">
-    <h3 th:text="${question.ennonce}"></h3>
-</div>
-<form method="post" th:action="@{/envoyerReponse}" th:object="${newReponse}">
-    <div class="form-group row">
-        <label>Votre Réponse<span>*</span></label>
-        <input type="text" class="form-control" placeholder="Entrez la réponse de la question"  th:field="*{reponse}">
+<form>
+    <div style="position:absolute; left:350px;top:320px;font-size:100%;border-left:2px; z-index:2;color:white;">
+        <b><h1 class="m-b-0 text-white" th:text="${question.ennonce}"></h1></b>
     </div>
-    <select id="eleve" class="form-control custom-select" style="visibility:hidden;" th:field="*{eleve}">
-        <option th:value="${eleve.id}"></option>
-    </select>
-    <select id="question" class="form-control custom-select" style="visibility:hidden;" th:field="*{question}">
-        <option th:value="${question.id}"></option>
-    </select>
-    <div class="form-group row">
-        <div class="col-lg-8 ml-auto">
-            <button type="submit" > <i class="fa fa-check"></i> Enregistrer question </button>
-        </div>
+    <div  style="position:absolute; left:730px;top:370px;font-size:70%;border-left:2px; z-index:2;">
+        <b><button class="btn_submit" style="border: hidden;background-color: transparent;font-size: 300%;" th:text="${question.reponse}" th:value="${question.reponse}" ></button></b>
     </div>
+    <div style="position:absolute; left:930px;top:370px;font-size:70%;border-left:2px; z-index:2;">
+        <b><button class="btn_submit" style="border: hidden;background-color: transparent;font-size: 300%;" th:text="${question.proposition1}" th:value="${question.proposition1}" ></button></b>
+    </div>
+    <div style="position:absolute; left:1100px;top:370px;font-size:70%;border-left:2px; z-index:2;">
+        <b><button class="btn_submit" style="border: hidden;background-color: transparent;font-size: 300%;" th:text="${question.proposition2}" th:value="${question.proposition2}" ></button></b>
+    </div>
+    <div style="position:absolute; left:1270px;top:370px;font-size:70%;border-left:2px; z-index:2;">
+        <b><button class="btn_submit" style="border: hidden;background-color: transparent;font-size: 300%;" th:text="${question.proposition3}" th:value="${question.proposition3}" ></button></b>
+    </div>
+    <input type="hidden" class="form-control" id="eleve_id" th:value="${eleve.id}" >
+    <input type="hidden" class="form-control" id="question_id" th:value="${question.id}" >
+    <div class="alert alert-success" id="msgNiveau" style="display: none;">
 
 </form>
+<script src="/js/lib/jquery/jquery.min.js"></script>
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        $('.btn_submit').on("click",function(e){
+            e.preventDefault();
+            var eleve_id = $("#eleve_id").val();
+            var question_id = $("#question_id").val();
+            var reponse = $(this).val();
+                $.ajax({
+                    type:"POST",
+                    url:"/envoyerReponse",
+                    data:{eleve_id:eleve_id,question_id:question_id, reponse:reponse},
+                    success:function (data) {
+                        alert(data);
+                    }
+                });
+
+        });
+    });
+</script>
+
 </body>
 </html>
