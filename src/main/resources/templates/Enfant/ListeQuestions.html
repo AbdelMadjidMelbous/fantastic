@@ -139,10 +139,14 @@
                         <br> </br>
                         
                       
-                        <li> <a href="Enfant_Liste.html" aria-expanded="false"><i class="fa fa-wpforms"></i><span class="hide-menu"> Mes Quizs</span></a>
+                        <li> <a href="#" aria-expanded="false"><i class="fa fa-wpforms"></i><span class="hide-menu"> Mes Quizs</span></a>
                             
                         </li>
                         <br> </br>
+
+                        <li> <a href="/textToSpeach" aria-expanded="false"><i class="fa fa-star"></i><span class="hide-menu"> Ecouter une Texte</span></a>
+
+                        </li>
                         
                          <li> <a href="#" aria-expanded="false"><i class="fa fa-star"></i><span class="hide-menu"> Mes étoiles</span></a>
                             
@@ -194,7 +198,7 @@
                                             <td> <span th:text="${questP.num_question}"></span></td>
                                             <td><span class="badge badge-success"><i class="ti-unlock"></i> Terminé  </span></td>
                                             <td><button type="button" class="btn btn-danger btn-flat btn-addon m-b-10 m-l-5"><i class="ti-lock"></i>  Répondre </button></td>
-                                            <td><button type="button" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"><i class="ti-unlock"></i> <a href="Résultat_Lecture.html">Résultat</button></td>
+                                            <td><button type="button" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"><i class="ti-unlock"></i> <a th:href="${'/consulterReponse/'+eleve.id+'/'+questP.id}">Résultat</button></td>
                                         </tr>
                                         <tr th:each="questCourant : ${questionEnCours}" th:value="${questCourant.id}">
                                             <td> <span th:text="${questCourant.ennonce}"></span></td>

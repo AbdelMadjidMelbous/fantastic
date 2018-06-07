@@ -87,6 +87,16 @@ public class EleveController {
         changementDeQuestion(eleve,question);
         return msg;
     }
+
+    @RequestMapping(value = "/consulterReponse/{id_eleve}/{id_question}",method = RequestMethod.GET)
+    public String consulter(@PathVariable Long id_eleve,@PathVariable Long id_question,Model model){
+        Eleve eleve=eleveRepository.findById(id_eleve).get();
+        Question question=questionRepository.findById(id_question).get();
+        ReponseEleve reponseEleve=reponseEleveRepository.ReponseByQuestion(question,eleve);
+        model.addAttribute("question",question);
+        model.addAttribute("reponse",reponseEleve);
+        return "Enfant/Afficher_Reponse";
+    }
     @RequestMapping(value = "/listeNiveaux/{id_eleve}/{id_module}/{id_annee}",method = RequestMethod.GET)
     public String listeNiveau(@PathVariable Long id_eleve,@PathVariable Long id_module,@PathVariable Long id_annee,Model model){
     model.addAttribute("niveauxPassee",niveauEleveRepository.niveauPassee(eleveRepository.findById(id_eleve).get(),moduleRepository.findById(id_module).get(),anneeRepository.findById(id_annee).get(),false));
