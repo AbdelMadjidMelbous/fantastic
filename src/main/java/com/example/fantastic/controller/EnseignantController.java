@@ -29,6 +29,8 @@ public class EnseignantController {
     QuestionRepository questionRepository;
     @Autowired
     ModuleRepository moduleRepository;
+    @Autowired
+    EnseignantRepository enseignantRepository;
 
 
     //Récupérer la liste des étudiants d'une classe
@@ -80,5 +82,13 @@ public class EnseignantController {
         model.addAttribute("questions",questionRepository.findByNiveau(niveau));
         return "Enseignant/ListeQuestions";
     }
+
+    @RequestMapping(value = "/accueilEnseignant/{id_enseignant}", method = RequestMethod.GET)
+    public String accueil(@PathVariable Long id_enseignant, Model model){
+        Enseignant enseignant=enseignantRepository.findById(id_enseignant).get();
+        model.addAttribute("enseignant",enseignant);
+        return "Enseignant/Accueil";
+    }
+
 
 }

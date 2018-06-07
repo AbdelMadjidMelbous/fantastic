@@ -16,23 +16,23 @@
         <b><h1 class="m-b-0 text-white" th:text="${question.ennonce}"></h1></b>
     </div>
     <div  style="position:absolute; left:730px;top:370px;font-size:70%;border-left:2px; z-index:2;">
-        <b><button class="btn_submit" style="border: hidden;background-color: transparent;font-size: 300%;" th:text="${question.reponse}" th:value="${question.reponse}" ></button></b>
+        <b><button class="btn_submit" style="border: hidden;background-color: transparent;font-size: 300%;" th:text="${p1}" th:value="${p1}" ></button></b>
     </div>
     <div style="position:absolute; left:930px;top:370px;font-size:70%;border-left:2px; z-index:2;">
-        <b><button class="btn_submit" style="border: hidden;background-color: transparent;font-size: 300%;" th:text="${question.proposition1}" th:value="${question.proposition1}" ></button></b>
+        <b><button class="btn_submit" style="border: hidden;background-color: transparent;font-size: 300%;" th:text="${p2}" th:value="${p2}" ></button></b>
     </div>
     <div style="position:absolute; left:1100px;top:370px;font-size:70%;border-left:2px; z-index:2;">
-        <b><button class="btn_submit" style="border: hidden;background-color: transparent;font-size: 300%;" th:text="${question.proposition2}" th:value="${question.proposition2}" ></button></b>
+        <b><button class="btn_submit" style="border: hidden;background-color: transparent;font-size: 300%;" th:text="${p3}" th:value="${p3}" ></button></b>
     </div>
     <div style="position:absolute; left:1270px;top:370px;font-size:70%;border-left:2px; z-index:2;">
-        <b><button class="btn_submit" style="border: hidden;background-color: transparent;font-size: 300%;" th:text="${question.proposition3}" th:value="${question.proposition3}" ></button></b>
+        <b><button class="btn_submit" style="border: hidden;background-color: transparent;font-size: 300%;" th:text="${p4}" th:value="${p4}" ></button></b>
     </div>
     <input type="hidden" class="form-control" id="eleve_id" th:value="${eleve.id}" >
     <input type="hidden" class="form-control" id="question_id" th:value="${question.id}" >
-    <input type="hidden" class="form-control" id="niveau_id" th:value="${niveau.id}" >
     <div class="alert alert-success" id="msgNiveau" style="display: none;">
-
+    </div>
 </form>
+
 <script src="/js/lib/jquery/jquery.min.js"></script>
 
 <script type="application/javascript">
@@ -41,7 +41,6 @@
             e.preventDefault();
             var eleve_id = $("#eleve_id").val();
             var question_id = $("#question_id").val();
-            var niveau_id=$("#niveau_id").val();
             var reponse = $(this).val();
                 $.ajax({
                     type:"POST",
@@ -49,9 +48,6 @@
                     data:{eleve_id:eleve_id,question_id:question_id, reponse:reponse},
                     success:function (data) {
                         alert(data);
-                        setTimeout(function(){// wait for 3 secs(2)
-                            location.replace("/listeQuestions/"+eleve_id+"/"+niveau_id); // then reload the page.(3)
-                        }, 1000);
                     }
                 });
 

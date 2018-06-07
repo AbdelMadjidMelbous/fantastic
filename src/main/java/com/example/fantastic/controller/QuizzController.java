@@ -47,7 +47,7 @@ public class QuizzController {
         Module module = moduleRepository.findById(module_id).get();
         model.addAttribute("questions", questionRepository.findByModule(module));
         model.addAttribute("upQuestion", new Question());
-        return "Enseignant/Afficher_Quiz_Lecture";
+        return "Enseignant/Liste_Quizz";
     }
 
     @RequestMapping(value = "/creerquizz/{annee_id}/{module_id}", method = RequestMethod.GET)

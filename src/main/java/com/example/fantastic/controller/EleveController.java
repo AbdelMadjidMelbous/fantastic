@@ -14,10 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 @Controller
 
@@ -59,9 +56,18 @@ public class EleveController {
     public String repondre(@PathVariable Long id_eleve,@PathVariable Long id_question, Model model){
         Question q= questionRepository.findById(id_question).get();
         model.addAttribute("question", q);
+        List<String> propositions = new ArrayList<>();
+        propositions.add(q.getReponse());
+        propositions.add(q.getProposition1());
+        propositions.add(q.getProposition2());
+        propositions.add(q.getProposition3());
+        Collections.shuffle(propositions);
+        model.addAttribute("p1", propositions.get(0));
+        model.addAttribute("p2", propositions.get(1));
+        model.addAttribute("p3", propositions.get(2));
+        model.addAttribute("p4", propositions.get(3));
         Eleve e= eleveRepository.findById(id_eleve).get();
         model.addAttribute("eleve", e);
-        model.addAttribute("niveau",q.getNiveau());
         model.addAttribute("newReponse", new ReponseEleve());
         return "Enfant/RepondreQuiz";
     }
