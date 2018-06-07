@@ -1,6 +1,7 @@
 package com.example.fantastic.controller;
 
 import com.example.fantastic.model.*;
+import com.example.fantastic.model.Module;
 import com.example.fantastic.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,8 @@ public class EnseignantController {
     NiveauRepository niveauRepository;
     @Autowired
     QuestionRepository questionRepository;
+    @Autowired
+    ModuleRepository moduleRepository;
 
 
     //Récupérer la liste des étudiants d'une classe
@@ -61,5 +64,21 @@ public class EnseignantController {
         return "Enseignant/Suivi_Eleve_quest";
     }
 
+    @RequestMapping(value = "/allniveaux/{id_module}/{id_annee}", method = RequestMethod.GET)
+    public String getAllNiveaux(@PathVariable Long id_module,@PathVariable Long id_annee, Model model){
+        Module module=moduleRepository.findById(id_module).get();
+        Annee annee=anneeRepository.findById(id_annee).get();
+        model.addAttribute("niveaux",niveauRepository.findByAnneeModule(annee,module));
+        model.addAttribute("module",module);
+        return "Enseignant/ListeNiveaux";
+    }
+
+    @RequestMapping(value = "/allquestions/{id_niveau}", method = RequestMethod.GET)
+    public String getAllquest(@PathVariable Long id_niveau, Model model){
+        Niveau niveau=niveauRepository.findById(id_niveau).get();
+        model.addAttribute("niveau",niveau);
+        model.addAttribute("questions",questionRepository.findByNiveau(niveau));
+        return "Enseignant/ListeQuestions";
+    }
 
 }
