@@ -1,5 +1,6 @@
 package com.example.fantastic.controller;
 
+import com.example.fantastic.model.Niveau;
 import com.example.fantastic.model.SupportDeCours;
 import com.example.fantastic.repository.NiveauRepository;
 import com.example.fantastic.repository.SupportDeCoursRepository;
@@ -48,6 +49,13 @@ public class SupportDeCoursController {
     @RequestMapping(value = "/cours", method = RequestMethod.GET)
     public String cours(Model model){
         model.addAttribute("cours", coursRepository.findAll());
+        return "Enfant/ListeFichier";
+
+    }
+    @RequestMapping(value = "/listeCours/{id_niveau}", method = RequestMethod.GET)
+    public String coursbyNiveau(@PathVariable Long id_niveau, Model model){
+        Niveau niveau=niveauRepository.findById(id_niveau).get();
+        model.addAttribute("cours", coursRepository.coursByNiveau(niveau));
         return "Enfant/ListeFichier";
 
     }

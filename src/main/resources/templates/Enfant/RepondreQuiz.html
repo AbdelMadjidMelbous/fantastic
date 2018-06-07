@@ -29,6 +29,7 @@
     </div>
     <input type="hidden" class="form-control" id="eleve_id" th:value="${eleve.id}" >
     <input type="hidden" class="form-control" id="question_id" th:value="${question.id}" >
+    <input type="hidden" class="form-control" id="niveau_id" th:value="${niveau.id}" >
     <div class="alert alert-success" id="msgNiveau" style="display: none;">
 
 </form>
@@ -40,6 +41,7 @@
             e.preventDefault();
             var eleve_id = $("#eleve_id").val();
             var question_id = $("#question_id").val();
+            var niveau_id=$("#niveau_id").val();
             var reponse = $(this).val();
                 $.ajax({
                     type:"POST",
@@ -47,6 +49,9 @@
                     data:{eleve_id:eleve_id,question_id:question_id, reponse:reponse},
                     success:function (data) {
                         alert(data);
+                        setTimeout(function(){// wait for 3 secs(2)
+                            location.replace("/listeQuestions/"+eleve_id+"/"+niveau_id); // then reload the page.(3)
+                        }, 1000);
                     }
                 });
 

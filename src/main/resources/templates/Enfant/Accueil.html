@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -10,12 +10,12 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
-    <title>Liste Quizs - Fantastic-Four</title>
+    <title>Ela - Bootstrap Admin Dashboard Template</title>
     <!-- Bootstrap Core CSS -->
-    <link href="/css/lib/bootstrap/bootstrap.min_kid.css" rel="stylesheet">
+    <link href="/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="/css/helper.css" rel="stylesheet">
-    <link href="/css/style_kid.css" rel="stylesheet">
+    <link href="/css/style_accueil.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -124,33 +124,57 @@
                     </ul>
                 </div>
             </nav>
-        </div>
+ </div>
         <!-- End header header -->
         <!-- Left Sidebar  -->
         <div class="left-sidebar">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                  <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li class="nav-devider"></li>
-                         <li> <a class="has-arrow  " th:href="${'/listeCours/'+niveau.id}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"> Mes Cours</span></a>
-                        </li>
-                        <br> </br>
+                 <nav class="sidebar-nav">
+                        <ul id="sidebarnav">
+                            <li class="nav-devider"></li>
+                            <li> <a class="has-arrow  " href="Accueil.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"> Accueil </span></a>
+
+                            </li>
+                            <li> <a class="has-arrow  " href="Afficher_Compte_Eleve.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"> Affichage élèves</span></a>
+
+                            </li>
+
+                            <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-wpforms"></i><span class="hide-menu">Création des Quizs</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="Créer_Quiz_Lecture.html">Lecture</a></li>
+                                    <li><a href="Créer_Quiz_Dictée.html">Dictée</a></li>
+                                    <li><a href="Créer_Quiz_Mathématique.html">Mathématique</a></li>
+                                    
+                                </ul>
+                            </li>
+                            <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-edit"></i><span class="hide-menu">Evaluation des Quizs</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="Evaluer_Quiz_Lecture.html">Lecture</a></li>
+                                    <li><a href="Evaluer_Quiz_Dictée.html">Dictée</a></li>
+                                    <li><a href="Evaluer_Quiz_Mathématique.html">Mathématique</a></li>
+                                </ul>
+                            </li>
+                            <li> <a class="has-arrow  " href="Suivi_Eleve_niv.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"> Suivi par niveau</span></a>
+                            <li> <a class="has-arrow  " href="Suivi_Eleve_quest.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"> Suivi par question</span></a>
+
+                            </li>
+                            <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-edit"></i><span class="hide-menu">Affichage des Quizs</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="Afficher_Quiz_Lecture.html">Lecture</a></li>
+                                    <li><a href="Afficher_Quiz_Dictée.html">Dictée</a></li>
+                                    <li><a href="Afficher_Quiz_Mathématique.html">Mathématique</a></li>
+                                </ul>
+                            </li>
+
+                            </li>
+                             <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Tableau de bord</span></a>
+                                
+                            </li>
                         
-                      
-                        <li> <a href="Enfant_Liste.html" aria-expanded="false"><i class="fa fa-wpforms"></i><span class="hide-menu"> Mes Quizs</span></a>
-                            
-                        </li>
-                        <br> </br>
-                        
-                         <li> <a href="#" aria-expanded="false"><i class="fa fa-star"></i><span class="hide-menu"> Mes étoiles</span></a>
-                            
-                        </li>
-                        
-                    
-                    </ul>
-                </nav>
+                        </ul>
+                    </nav>
                 <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
@@ -159,73 +183,13 @@
         <!-- Page wrapper  -->
         <div class="page-wrapper">
             <!-- Bread crumb -->
-           <div class="row page-titles">
-                <div class="col-md-8 align-self-center">
-                    <h1 class="text-primary"><center> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${niveau.libelle}"></span></center> </h1> </div>
-              
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h1 class="text-primary">Bienvenue à vous !  </h1></div>
             </div>
             <!-- End Bread crumb -->
             <!-- Container fluid  -->
-            <div class="container-fluid card-outline-primary-math">
-                <!-- Start Page Content -->
-                <div class="row">
-                    <div class="col-12">
-                        <!-- begin data export -->
-                         <div class="card-header">
-                                <h1 class="m-b-0 text-primary"><b>Mes questions </b></h1>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="table-responsive m-t-40">
-                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th>Question</th>
-                                                <th>Numéro</th>
-                                                <th>Etat</th>
-                                                <th>Répondre</th>
-                                                <th>Résultat</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr th:each="questP : ${questionsPassee}" th:value="${questP.id}" >
-                                            <td> <span th:text="${questP.ennonce}"></span></td>
-                                            <td> <span th:text="${questP.num_question}"></span></td>
-                                            <td><span class="badge badge-success"><i class="ti-unlock"></i> Terminé  </span></td>
-                                            <td><button type="button" class="btn btn-danger btn-flat btn-addon m-b-10 m-l-5"><i class="ti-lock"></i>  Répondre </button></td>
-                                            <td><button type="button" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"><i class="ti-unlock"></i> <a href="Résultat_Lecture.html">Résultat</button></td>
-                                        </tr>
-                                        <tr th:each="questCourant : ${questionEnCours}" th:value="${questCourant.id}">
-                                            <td> <span th:text="${questCourant.ennonce}"></span></td>
-                                            <td> <span th:text="${questCourant.num_question}"></span></td>
-                                            <td><span class="badge badge-secondary"><i class="ti-unlock"></i> débloqué </span></td>
-                                            <td><button type="button" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"><i class="ti-unlock"></i> <a th:href="${'/repondre/'+eleve.id+'/'+questCourant.id}">Répondre</button></td>
-                                            <td><button type="button" class="btn btn-danger btn-flat btn-addon m-b-10 m-l-5"><i class="ti-lock"></i>Résultat</button></td>
-                                        </tr>
-                                        <tr th:each="questRestant :${questionsRestant}" th:value="${questRestant.id}">
-                                            <td><span th:text="${questRestant.ennonce}"></span></td>
-                                            <td> <span th:text="${questRestant.num_question}"></span> </td>
-                                            <td><span class="badge badge-danger"><i class="ti-lock"></i> bloqué </span></td>
-                                            <td><button type="button" class="btn btn-danger btn-flat btn-addon m-b-10 m-l-5"><i class="ti-lock"></i>Répondre</button></td>
-                                            <td><button type="button" class="btn btn-danger btn-flat btn-addon m-b-10 m-l-5"><i class="ti-lock"></i>Résultat</button></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end data export -->
-
-                       
-                    </div>
-                </div>
-                <!-- End PAge Content -->
-            </div>
             <!-- End Container fluid  -->
-            <!-- footer -->
-            
-            <!-- End footer -->
         </div>
         <!-- End Page wrapper  -->
     </div>

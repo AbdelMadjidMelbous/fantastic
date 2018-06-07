@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -299,7 +299,7 @@
                 <div class="row">
                         <div class="col-md-6">
 
-                                <button type="submit" class="bg-primary btn-lg btn-primary"><a href="Afficher_Liste_Niv_Lecture.html"> 
+                                <button type="submit" class="bg-primary btn-lg btn-primary"><a th:href="${'/niveauEnCours/'+eleve.id+'/'+annee.id+'/1'}">
                                     <div class="media widget-ten">
                                         <div class="media-left meida media-middle">
                                           <i class="ti-book f-s-100"></i>
@@ -314,7 +314,7 @@
                             
                         </div>
                         <div class="col-md-6">
-                             <button type="submit" class="bg-pink btn-lg btn-primary"><a href="Afficher_Liste_Niv_Dictée.html"> 
+                             <button type="submit" class="bg-pink btn-lg btn-primary"><a href="#">
                                     <div class="media widget-ten">
                                         <div class="media-left meida media-middle">
                                           <i class="ti-pencil-alt f-s-100"></i>
@@ -332,7 +332,7 @@
                     <div class="col-md-6">
                         <br></br>
                         
-                       <button type="submit" class=" bg-success btn-lg btn-primary"><a href="Afficher_Liste_Niv_Mathématique.html"> 
+                       <button type="submit" class=" bg-success btn-lg btn-primary"><a href="#">
                                     <div class="media widget-ten">
                                         <div class="media-left meida media-middle">
                                           <i class="ti-ruler-pencil f-s-100"></i>
@@ -358,6 +358,7 @@
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
+        <script src="/js/lib/jquery/jquery.min.js"></script>
     <script src="/js/lib/bootstrap/js/popper.min.js"></script>
     <script src="/js/lib/bootstrap/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->

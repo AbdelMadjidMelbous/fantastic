@@ -12,10 +12,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
     <title>Ela - Bootstrap Admin Dashboard Template</title>
     <!-- Bootstrap Core CSS -->
-    <link href="/css/lib/bootstrap/bootstrap.min_kid.css" rel="stylesheet">
+    <link href="/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="/css/helper.css" rel="stylesheet">
-    <link href="/css/style_kid.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -314,6 +314,7 @@
                                                 <th>Module </th>
                                                 <th>Niveau </th>
                                                 <th>Lire</th>
+                                                <th>Supprimer</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -324,6 +325,7 @@
                                                 <td><span th:text="${cour.niveau.module.libelle}"></span></td>
                                                 <td><span th:text="${cour.niveau.libelle}"></span></td>
                                                 <td><a th:id="${cour.id}" href="http://localhost:8080/cours/" onclick="location.href=this.href+this.id;return false;" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"><i class="ti-settings"></i> Lire</a></td>
+                                                <td><a th:id="${cour.id}" href="http://localhost:8080/supprimerCours/" onclick="location.href=this.href+this.id;return false;" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"><i class="ti-settings"></i> Supprimer</a></td>
                                             </tr>
                                         </tbody>
                                     </table>

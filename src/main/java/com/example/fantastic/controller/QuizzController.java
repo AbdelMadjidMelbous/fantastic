@@ -113,17 +113,19 @@ public class QuizzController {
 
     @RequestMapping(value = "/listeQuestions/{id_eleve}/{id_niveau}",method = RequestMethod.GET)
     public String listeQuestion(@PathVariable Long id_eleve,@PathVariable Long id_niveau,Model model){
-        model.addAttribute("questionsPassee",reponseEleveRepository.questionPassee(eleveRepository.findById(id_eleve).get(),niveauRepository.findById(id_niveau).get(),false));
-        model.addAttribute("questionEnCours",reponseEleveRepository.questionEnCours(eleveRepository.findById(id_eleve).get(),niveauRepository.findById(id_niveau).get(),true));
-        model.addAttribute("questionsRestant",questionsRestant(eleveRepository.findById(id_eleve).get(),niveauRepository.findById(id_niveau).get()));
-        model.addAttribute("niveau",niveauRepository.findById(id_niveau).get());
+        Eleve eleve=eleveRepository.findById(id_eleve).get();
+        Niveau niveau=niveauRepository.findById(id_niveau).get();
+        model.addAttribute("questionsPassee",reponseEleveRepository.questionPassee(eleve,niveau,false));
+        model.addAttribute("questionEnCours",reponseEleveRepository.questionEnCours(eleve,niveau,true));
+        model.addAttribute("questionsRestant",questionsRestant(eleve,niveau));
+        model.addAttribute("niveau",niveau);
+        model.addAttribute("eleve",eleve);
         return "Enfant/ListeQuestions";
     }
     @RequestMapping(value = "/test5/{id_eleve}/{id_question}",method = RequestMethod.GET)
     public String myytesttt(@PathVariable Long id_eleve,@PathVariable Long id_question) {
         Eleve e=eleveRepository.findById(id_eleve).get();
         Question q=questionRepository.findById(id_question).get();
-        changementDeQuestion(e,q);
         return "redirect:/quizz";
 
     }
@@ -139,49 +141,7 @@ public class QuizzController {
         return questionsRestant;
     }
 
-    public void changementDeQuestion(Eleve eleve,Question questionEnCours ){
-        //Chercher la question en cours dans la table réponse
-        ReponseEleve r=reponseEleveRepository.ReponseByQuestion(questionEnCours,eleve);
-        //Changer l'état de la question en cours
-        r.setEncours(false);
-        reponseEleveRepository.save(r); // updadate??
-        //Rechercher la question suivante dans le niveau est l'insérer dans la table réponse elève
-        int num_suivant= questionEnCours.getNum_question() +1;
-        List<Question> questionSuivante= questionRepository.findByNum_question(num_suivant,questionEnCours.getNiveau());
-        //Ajouter la nouvelle question dans la table
-        if (questionSuivante.size() != 0){
-            ReponseEleve nouvReponse= new ReponseEleve();
-            nouvReponse.setEncours(true);
-            nouvReponse.setEleve(eleve);
-            nouvReponse.setNote(0);
-            nouvReponse.setQuestion(questionSuivante.get(0));
-            reponseEleveRepository.save(nouvReponse);
-        }else {
-            //Chercher la première question dans le niveau suivant
-            ReponseEleve nouvReponse= new ReponseEleve();
-            nouvReponse.setEncours(true);
-            nouvReponse.setEleve(eleve);
-            nouvReponse.setNote(0);
-            num_suivant=1;
-            int difSuivante=questionEnCours.getNiveau().getDifficulte()+1;
-            List<Niveau> niveauSuivant=niveauRepository.findByDifficulte(questionEnCours.getNiveau().getAnnee(),questionEnCours.getNiveau().getModule(),difSuivante);
-            if (niveauSuivant.size() !=0){
-                // s'il existe un niveau suivant on sauvgarde dans la table niveauEleve et on cherche la première question de ce niveau
-                NiveauEleve niveauEleve= niveauEleveRepository.findByniveau(eleve,questionEnCours.getNiveau());
-                niveauEleve.setEncours(false);
-                NiveauEleve nouvNiveau= new NiveauEleve();
-                nouvNiveau.setEncours(true);
-                nouvNiveau.setEleve(eleve);
-                nouvNiveau.setNiveau(niveauSuivant.get(0));
-                niveauEleveRepository.save(nouvNiveau);
-                questionSuivante=questionRepository.findByNum_question(num_suivant,niveauSuivant.get(0));
-                nouvReponse.setQuestion(questionSuivante.get(0));
-                reponseEleveRepository.save(nouvReponse);
-            }
 
-        }
-
-    }
 
 
 }
